@@ -17,8 +17,8 @@ public class ShotRaycast : MonoBehaviour
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range))
             {
                 Debug.Log("Objeto colisionado: "+ hit.collider.name);
-                //GameObject effectObject = Instantiate(effect, hit.point, Quaternion.identity);
-                //Destroy(effectObject, 5);
+                GameObject effectObject = Instantiate(effect, hit.point, Quaternion.identity);
+                Destroy(effectObject, 1);
 
                 if (hit.collider.GetComponent<Rigidbody>() != null)
                 {
