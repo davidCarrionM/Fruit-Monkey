@@ -12,3 +12,6 @@
 * Añadidas particulas en el arma y en la zona de impacto.
 5. *Dia 5*
 * Implementado el cuchillo y la posibilidad de cambiar de arma entre el cuchillo y la pistola.
+6. *Dia 6*
+* Intento de arreglar el Sway de las armas, ya que el Script que se encarga del movimiento de esta es eclipsado por el Animator controler y no funciona
+* Implementacion del objeto granada
