@@ -27,6 +27,7 @@ public class WeaponSwitch : MonoBehaviour
             {
                 selectedWeapon++;
             }
+            
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
@@ -57,6 +58,8 @@ public class WeaponSwitch : MonoBehaviour
                 if (i == selectedWeapon)
                 {
                     weapon.gameObject.SetActive(true);
+                    StartCoroutine(AnimationWeapon(selectedWeapon));
+
                 }
                 else
                 {
@@ -65,6 +68,28 @@ public class WeaponSwitch : MonoBehaviour
 
                 i++;
             }
+
         }
+    }
+
+    IEnumerator AnimationWeapon(int animation)
+    {
+        string animationName = "";
+        switch (animation)
+        {
+            case 0:
+                animationName = "GunUp";
+                break;
+            case 1:
+                animationName = "KnifeUp";
+                break;
+            default:
+                animationName = "GunUp";
+                break;
+        }
+
+        weapons[selectedWeapon].GetComponent<Animator>().Play(animationName);
+        yield return new WaitForSeconds(0.40f);
+        weapons[selectedWeapon].GetComponent<Animator>().Play("New State");
     }
 }

@@ -12,33 +12,33 @@ public class ShotRaycast : MonoBehaviour
     public GameObject EffectShot;
     public Transform PositionShot;
     public GameObject Weapon;
-
+    public Animator Animator;
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             if (Time.time > shotRateTime)
             {
-
-            RaycastHit hit;
-            StartCoroutine(StartRecoil());
-            if (Weapon.tag == "Gun")
-            {
-                GameObject shotEffect = Instantiate(EffectShot, PositionShot.position, PositionShot.rotation);
-                Destroy(shotEffect, 1);
-            }
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Range))
-            {
-                Debug.Log("Objeto colisionado: " + hit.collider.name);
-
-                GameObject effectObject = Instantiate(EffectHit, hit.point, Quaternion.identity);
-                Destroy(effectObject, 1);
-
-                if (hit.collider.GetComponent<Rigidbody>() != null)
+                //Animator.SetBool("shot", true);
+                RaycastHit hit;
+                StartCoroutine(StartRecoil());
+                if (Weapon.tag == "Gun")
                 {
-                    hit.collider.GetComponent<Rigidbody>().AddForce(hit.normal * -BulletForce);
+                    GameObject shotEffect = Instantiate(EffectShot, PositionShot.position, PositionShot.rotation);
+                    Destroy(shotEffect, 1);
                 }
-            }
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Range))
+                {
+                    Debug.Log("Objeto colisionado: " + hit.collider.name);
+
+                    GameObject effectObject = Instantiate(EffectHit, hit.point, Quaternion.identity);
+                    Destroy(effectObject, 1);
+
+                    if (hit.collider.GetComponent<Rigidbody>() != null)
+                    {
+                        hit.collider.GetComponent<Rigidbody>().AddForce(hit.normal * -BulletForce);
+                    }
+                }
                 shotRateTime = Time.time + ShotRate;
             }
 
@@ -67,4 +67,9 @@ public class ShotRaycast : MonoBehaviour
             Weapon.GetComponent<Animator>().Play("New State");
         }
     }
+
+    //public void DetectEnd()
+    //{
+    //    Animator.SetBool("shot", false);
+    //}
 }
