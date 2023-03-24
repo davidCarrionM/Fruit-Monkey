@@ -10,6 +10,7 @@ public class Granade : MonoBehaviour
     public float radius = 5;
     public float explosionForce = 70;
     bool exploded = false;
+    public GameObject explosionEffect;
 
     void Start()
     {
@@ -28,6 +29,8 @@ public class Granade : MonoBehaviour
 
     private void Explote()
     {
+
+        Instantiate(explosionEffect,transform.position,transform.rotation);
         Collider[] colliders = Physics.OverlapSphere(transform.position,radius);
         foreach (Collider item in colliders)
         {
