@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponSwitch : MonoBehaviour
 {
+    //Añadir Headers
+
     public GameObject[] weapons;
     public int selectedWeapon = 0;
 

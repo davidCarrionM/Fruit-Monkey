@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThrowGranade : MonoBehaviour
 {
-
+    //Añadir headers
     public float throwForce = 500;
     public float throwUpwardForce = 100;
     public Transform spawnGranade;

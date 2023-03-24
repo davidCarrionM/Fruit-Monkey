@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Añadir Headers
 
     public CharacterController characterControler;
     public float speed = 12f;
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float sphereRadius = 0.3f;
     public LayerMask groundMask;
     bool isGround;
+    public bool isClimbing;
     public float jumpHeigh = 3f;
     public Animator Animator;
 
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
+        if (!isClimbing)
+        {
 
         isGround = Physics.CheckSphere(groundCheck.position, sphereRadius, groundMask);
 
@@ -50,8 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         characterControler.Move(velocity * Time.deltaTime);
-
-
+        }
     }
 
 }

@@ -165,8 +165,8 @@ MonoBehaviour:
     y: 0
     width: 907
     height: 482
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -393,7 +393,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: -231, y: -197}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
@@ -433,9 +433,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.6778508, y: 1.1998492, z: 3.044071}
+    m_Target: {x: 5.1538095, y: 6.2101483, z: -4.077252}
     speed: 2
-    m_Value: {x: -0.6778508, y: 1.1998492, z: 3.044071}
+    m_Value: {x: 5.1538095, y: 6.2101483, z: -4.077252}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -482,13 +482,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.0010875206, y: -0.9770059, z: -0.004984122, w: 0.21314509}
+    m_Target: {x: 0.110706694, y: -0.36642763, z: 0.043954663, w: 0.9227668}
     speed: 2
-    m_Value: {x: -0.001087522, y: -0.97700715, z: -0.0049841283, w: 0.21314538}
+    m_Value: {x: 0.110709146, y: -0.36643574, z: 0.043955635, w: 0.9227872}
   m_Size:
-    m_Target: 0.77870864
+    m_Target: 0.64249104
     speed: 2
-    m_Value: 0.77870864
+    m_Value: 0.64249104
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -683,25 +683,25 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3c18ffff
-      m_LastClickedID: -59332
-      m_ExpandedIDs: 32fbffff2a65000026660000
+      m_SelectedIDs: 2a660000
+      m_LastClickedID: 26154
+      m_ExpandedIDs: 32fbffff2e650000866500002a66000066670000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Banana_Pistol
+        m_OriginalName: Banana_Pistol
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 26470
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 7}
+        m_ClientGUIView: {fileID: 8}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -778,22 +778,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Objects/Weapons
+    - Assets/PrubeSripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Objects/Weapons
+  - Assets/PrubeSripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Proyectos unity\Fruit-Monkey
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c8680000
-    m_LastClickedID: 26824
-    m_ExpandedIDs: 00000000c6680000c8680000ca680000fc68000000ca9a3b
+    m_SelectedIDs: ea680000
+    m_LastClickedID: 26858
+    m_ExpandedIDs: 00000000da680000dc680000de680000e6680000ba7f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -821,7 +821,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c6680000c8680000ca680000
+    m_ExpandedIDs: 00000000da680000dc680000de68000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -846,8 +846,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 3c18ffff
-    m_LastClickedInstanceID: -59332
+    m_SelectedInstanceIDs: 2a660000
+    m_LastClickedInstanceID: 26154
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 00000000
     m_RenameOverlay:
@@ -896,8 +896,8 @@ MonoBehaviour:
     y: 0
     width: 388
     height: 939
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -940,7 +940,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 297
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
