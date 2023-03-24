@@ -22,38 +22,57 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = speed * 1.5f;
+        }
+        if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = speed / 1.5f;
+        }
         if (!isClimbing)
         {
+            
+            isGround = Physics.CheckSphere(groundCheck.position, sphereRadius, groundMask);
 
-        isGround = Physics.CheckSphere(groundCheck.position, sphereRadius, groundMask);
+            if (isGround && velocity.y < 0)
+            {
+                velocity.y = -2f;
+                velocity.x = 0;
+                velocity.z = 0;
+            }
 
-        if (isGround && velocity.y < 0)
-        {
-            velocity.y = -2f;
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+            //if (z!=0 || x != 0)
+            //{
+            //    Animator.SetBool("isMoving", true);
+            //}
+            //else
+            //{
+            //    Animator.SetBool("isMoving", false);
+
+            //}
+            Vector3 move = transform.right * x + transform.forward * z;
+            if (isGround && Input.GetKeyDown(KeyCode.Space))
+            {
+                velocity.y = Mathf.Sqrt(jumpHeigh * -2 * gravity);
+            }
+
+            characterControler.Move(move * speed * Time.deltaTime);
+
+            velocity.y += gravity * Time.deltaTime;
+            characterControler.Move(velocity * Time.deltaTime);
+            
         }
-
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        //if (z!=0 || x != 0)
-        //{
-        //    Animator.SetBool("isMoving", true);
-        //}
-        //else
-        //{
-        //    Animator.SetBool("isMoving", false);
-
-        //}
-        Vector3 move = transform.right * x + transform.forward * z;
-        if (isGround && Input.GetKeyDown(KeyCode.Space))
+        else
         {
-            velocity.y = Mathf.Sqrt(jumpHeigh * -2 * gravity);
-        }
-
-        characterControler.Move(move * speed * Time.deltaTime);
-
-        velocity.y += gravity * Time.deltaTime;
-        characterControler.Move(velocity * Time.deltaTime);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isClimbing = false;
+                velocity.y = Mathf.Sqrt(jumpHeigh * -2 * gravity);
+                isGround = true;
+            }
         }
     }
 

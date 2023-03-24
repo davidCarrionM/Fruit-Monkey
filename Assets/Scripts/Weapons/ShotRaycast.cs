@@ -13,8 +13,28 @@ public class ShotRaycast : MonoBehaviour
     public Transform PositionShot;
     public GameObject Weapon;
     public Animator Animator;
+    public Camera cam;
+    public Camera camWeapon;
+    private bool aim = false;
     void Update()
     {
+        if (Weapon.tag == "Gun")
+        {
+            if (Input.GetButtonDown("Fire2"))
+            {
+                aim = true;
+                Weapon.GetComponent<Animator>().Play("Aim");
+                cam.fieldOfView = 30f;
+                camWeapon.fieldOfView = 40f;
+            }
+            if (Input.GetButtonUp("Fire2"))
+            {
+                aim = false;
+                cam.fieldOfView = 80f;
+                Weapon.GetComponent<Animator>().Play("AimBack");
+                camWeapon.fieldOfView = 70f;
+            }
+        }
         if (Input.GetButtonDown("Fire1"))
         {
             if (Time.time > shotRateTime)
@@ -55,9 +75,18 @@ public class ShotRaycast : MonoBehaviour
     {
         if (Weapon.tag == "Gun")
         {
-            Weapon.GetComponent<Animator>().Play("Recoil");
-            yield return new WaitForSeconds(0.15f);
-            Weapon.GetComponent<Animator>().Play("New State");
+            if (!aim)
+            {
+                Weapon.GetComponent<Animator>().Play("Recoil");
+                yield return new WaitForSeconds(0.15f);
+                Weapon.GetComponent<Animator>().Play("New State");
+            }
+            else
+            {
+                Weapon.GetComponent<Animator>().Play("AimRecoil");
+                yield return new WaitForSeconds(0.15f);
+                Weapon.GetComponent<Animator>().Play("AimIdle");
+            }
         }
 
         if (Weapon.tag == "Knife")

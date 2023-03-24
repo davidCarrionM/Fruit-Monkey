@@ -5,7 +5,6 @@ using UnityEngine;
 public class Climb : MonoBehaviour
 {
     public float range = 1f;
-    public float UpwardSpeed = 3.3f;
     public Camera Cam;
     public LayerMask layermask;
     public CharacterController characterControler;
@@ -30,7 +29,7 @@ public class Climb : MonoBehaviour
             {
                 Debug.Log(hit.transform.name);
 
-                velocity.y = UpwardSpeed;
+                velocity.y = playerMovement.speed/2.5f;
                 characterControler.Move(velocity * Time.deltaTime);
 
                 playerMovement.isClimbing = true;
