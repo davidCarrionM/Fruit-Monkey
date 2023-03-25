@@ -7,6 +7,8 @@ public class ThrowGranade : MonoBehaviour
     //Añadir headers
     public float throwForce = 500;
     public float throwUpwardForce = 100;
+    public float ShotRate = 5f;
+    private float shotRateTime = 0f;
     public Transform spawnGranade;
     public Transform cam;
     public GameObject granade;
@@ -15,15 +17,19 @@ public class ThrowGranade : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            GranadeThrow();
-        }    
+            if (Time.time > shotRateTime)
+            {
+                GranadeThrow();
+                shotRateTime = Time.time + ShotRate;
+            }
+        }
     }
     public void GranadeThrow()
     {
         GameObject newGranade = Instantiate(granade, spawnGranade.position, cam.rotation);
         Rigidbody granadeRb = newGranade.GetComponent<Rigidbody>();
 
-        Vector3 forceToAdd = cam.transform.forward* throwForce + transform.up * throwUpwardForce;
+        Vector3 forceToAdd = cam.transform.forward * throwForce + transform.up * throwUpwardForce;
 
         granadeRb.AddForce(forceToAdd, ForceMode.Impulse);
     }

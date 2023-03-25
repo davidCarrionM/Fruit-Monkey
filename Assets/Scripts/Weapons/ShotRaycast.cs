@@ -47,7 +47,6 @@ public class ShotRaycast : MonoBehaviour
         {
             if (Time.time > shotRateTime)
             {
-                //Animator.SetBool("shot", true);
                 RaycastHit hit;
                 StartCoroutine(StartRecoil());
                 if (Weapon.tag == "Gun")
@@ -112,13 +111,4 @@ public class ShotRaycast : MonoBehaviour
         }
     }
 
-    public void returnInitialPosition()
-    {
-        Weapon.transform.position = new Vector3(0.699999988f, -0.241999999f, 1.71200001f);
-    }
-
-    //public void DetectEnd()
-    //{
-    //    Animator.SetBool("shot", false);
-    //}
 }
