@@ -15,7 +15,9 @@ public class ShotRaycast : MonoBehaviour
     public Animator Animator;
     public Camera cam;
     public Camera camWeapon;
+    public CamaraMovement camaraMovement;
     private bool aim = false;
+    
     void Update()
     {
         if (Weapon.tag == "Gun")
@@ -24,15 +26,21 @@ public class ShotRaycast : MonoBehaviour
             {
                 aim = true;
                 Weapon.GetComponent<Animator>().Play("Aim");
+                cam.GetComponent<Animator>().Play("CamaraFov");
                 cam.fieldOfView = 30f;
                 camWeapon.fieldOfView = 40f;
+                camaraMovement.Sensibility = camaraMovement.Sensibility / 1.5f;
+                Range = Range * 1.3f;
             }
             if (Input.GetButtonUp("Fire2"))
             {
                 aim = false;
                 cam.fieldOfView = 80f;
                 Weapon.GetComponent<Animator>().Play("AimBack");
-                camWeapon.fieldOfView = 70f;
+                cam.GetComponent<Animator>().Play("CamaraFovBack");
+                camWeapon.fieldOfView = 60f;
+                camaraMovement.Sensibility = camaraMovement.Sensibility * 1.5f;
+                Range = Range / 1.3f;
             }
         }
         if (Input.GetButtonDown("Fire1"))
@@ -85,7 +93,14 @@ public class ShotRaycast : MonoBehaviour
             {
                 Weapon.GetComponent<Animator>().Play("AimRecoil");
                 yield return new WaitForSeconds(0.15f);
+                if (aim)
+                {
                 Weapon.GetComponent<Animator>().Play("AimIdle");
+                }
+                else
+                {
+                    Weapon.GetComponent<Animator>().Play("New State");
+                }
             }
         }
 
@@ -95,6 +110,11 @@ public class ShotRaycast : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
             Weapon.GetComponent<Animator>().Play("New State");
         }
+    }
+
+    public void returnInitialPosition()
+    {
+        Weapon.transform.position = new Vector3(0.699999988f, -0.241999999f, 1.71200001f);
     }
 
     //public void DetectEnd()

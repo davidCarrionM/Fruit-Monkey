@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isClimbing;
     public float jumpHeigh = 3f;
     public Animator Animator;
+    public WeaponSwitch weaponSwitch;
 
     Vector3 velocity;
     void Update()
@@ -44,15 +45,6 @@ public class PlayerMovement : MonoBehaviour
 
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
-            //if (z!=0 || x != 0)
-            //{
-            //    Animator.SetBool("isMoving", true);
-            //}
-            //else
-            //{
-            //    Animator.SetBool("isMoving", false);
-
-            //}
             Vector3 move = transform.right * x + transform.forward * z;
             if (isGround && Input.GetKeyDown(KeyCode.Space))
             {

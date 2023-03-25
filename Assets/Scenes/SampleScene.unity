@@ -3565,6 +3565,7 @@ MonoBehaviour:
   isClimbing: 0
   jumpHeigh: 1.5
   Animator: {fileID: 1696189671}
+  weaponSwitch: {fileID: 330585549}
 --- !u!143 &1163505173
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7624,5 +7625,20 @@ PrefabInstance:
       propertyPath: camWeapon
       value: 
       objectReference: {fileID: 56942952}
+    - target: {fileID: 6862364773011808442, guid: b3bbd35ec0ec68f4fa71847e99540da9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6862364773011808442, guid: b3bbd35ec0ec68f4fa71847e99540da9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6862364773011808442, guid: b3bbd35ec0ec68f4fa71847e99540da9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3bbd35ec0ec68f4fa71847e99540da9, type: 3}
