@@ -22,7 +22,7 @@ public class ShotRaycast : MonoBehaviour
     {
         if (Weapon.tag == "Gun")
         {
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetMouseButtonDown(1))
             {
                 aim = true;
                 Weapon.GetComponent<Animator>().Play("Aim");
@@ -32,7 +32,7 @@ public class ShotRaycast : MonoBehaviour
                 camaraMovement.Sensibility = camaraMovement.Sensibility / 1.5f;
                 Range = Range * 1.3f;
             }
-            if (Input.GetButtonUp("Fire2"))
+            if (Input.GetMouseButtonUp(1))
             {
                 aim = false;
                 cam.fieldOfView = 80f;
@@ -43,7 +43,7 @@ public class ShotRaycast : MonoBehaviour
                 Range = Range / 1.3f;
             }
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0))
         {
             if (Time.time > shotRateTime)
             {

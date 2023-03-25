@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -19,8 +20,13 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeigh = 3f;
     public Animator Animator;
     public WeaponSwitch weaponSwitch;
-
     Vector3 velocity;
+    //***********
+    public Camera cam;
+    private Camera camReference;
+    //***********
+
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -30,6 +36,18 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = speed / 1.5f;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            speed = speed / 2.2f;
+            transform.localScale = new Vector3(1f,0.5f,1f);
+            cam.transform.localScale = new Vector3(1f,2f,1f);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            speed = speed * 2.2f;
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            cam.transform.localScale = new Vector3(1f,1f,1f);
         }
         if (!isClimbing)
         {
