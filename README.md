@@ -22,3 +22,5 @@
 8. *Dia 8*
 * Arreglado algunos errores a la hora de apuntar, como cuando pulsas apuntar y disparar a la vez se quedaba pillada el arma en la posicion de apuntado y ya no.
 * Añadido un tiempo de recarga de la granada.
+* Añadido ragdoll al modelo del enemigo.
+* Añadida una IA para el enemigo.
