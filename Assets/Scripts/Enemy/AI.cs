@@ -11,18 +11,22 @@ public class AI : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Transform[] destinations;
     private int i = 0;
-    public int life = 3;
+    public int life = 6;
     public float distanceDestination = 2f;
     private GameObject player;
     //public bool followPlayer;
     private float distanceToPlayer;
     public float distanceToFollow = 10;
     private Ragdoll ragdollScript;
+    private float speedRunning;
+    private float speedNormal;
     void Start()
     {
         navMeshAgent.destination = destinations[0].position;
         player = FindObjectOfType<PlayerMovement>().gameObject;
         ragdollScript = GetComponent<Ragdoll>();
+        speedRunning = navMeshAgent.speed * 3;
+        speedNormal = navMeshAgent.speed;
     }
 
     void Update()
@@ -65,10 +69,13 @@ public class AI : MonoBehaviour
             }
 
         }
+        navMeshAgent.speed = speedNormal;
+
     }
 
     public void FollowPlayer()
     {
         navMeshAgent.destination = player.transform.position;
+        navMeshAgent.speed = speedRunning;
     }
 }

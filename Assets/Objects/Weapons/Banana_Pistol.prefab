@@ -612,11 +612,14 @@ MonoBehaviour:
   ShotRate: 0.15
   EffectHit: {fileID: 5180330369662862574, guid: dff663f5617f531448a02fd1aca776dd,
     type: 3}
-  EffectShot: {fileID: 5857093453688146878, guid: 1771bbbb735ef744fae8846ea2a38eb8,
+  EffectShot: {fileID: 5857093453688146878, guid: 7bded1dd55b517544a5fcb12d42b26de,
     type: 3}
   PositionShot: {fileID: 6862364773011808442}
   Weapon: {fileID: 6052114105025784447}
   Animator: {fileID: 6862364772920758198}
+  cam: {fileID: 0}
+  camWeapon: {fileID: 0}
+  camaraMovement: {fileID: 0}
 --- !u!114 &6862364772920758200
 MonoBehaviour:
   m_ObjectHideFlags: 0

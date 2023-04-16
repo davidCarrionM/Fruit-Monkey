@@ -39,6 +39,12 @@ public class Granade : MonoBehaviour
             {
                 rb.AddExplosionForce(explosionForce*10, transform.position,radius);
             }
+            if (item.gameObject.tag == "Body") {
+                GameObject enemy = item.transform.root.gameObject;
+                enemy.GetComponent<AI>().life -= 6;
+                Debug.Log("Life: " + enemy.GetComponent<AI>().life);
+            }
+
         }
         Destroy(gameObject);
     }

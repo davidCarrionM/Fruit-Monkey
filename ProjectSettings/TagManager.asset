@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Gun
   - Knife
+  - Head
+  - Body
+  - Extremities
   layers:
   - Default
   - TransparentFX

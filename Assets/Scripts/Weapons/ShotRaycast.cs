@@ -12,11 +12,11 @@ public class ShotRaycast : MonoBehaviour
     public GameObject EffectShot;
     public Transform PositionShot;
     public GameObject Weapon;
+    public GameObject bloodEfect;
     public Animator Animator;
     public Camera cam;
     public Camera camWeapon;
     public CamaraMovement camaraMovement;
-    private AI ai;
     private bool aim = false;
     
     void Update()
@@ -58,15 +58,39 @@ public class ShotRaycast : MonoBehaviour
                 if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Range))
                 {
 
-                    GameObject effectObject = Instantiate(EffectHit, hit.point, Quaternion.identity);
-                    Destroy(effectObject, 1);
+                    
 
                     if (hit.collider.GetComponent<Rigidbody>() != null)
                     {
                         Debug.Log("Objeto colisionado: " + hit.collider.name + " tag: " + hit.collider.tag);
+                        if (hit.collider.tag == "Head" || hit.collider.tag == "Body" || hit.collider.tag == "Extremities")
+                        {
+                            GameObject bloodObject = Instantiate(bloodEfect, hit.point, Quaternion.identity);
+                            Destroy(bloodObject, 1);
+                        }
+                        else
+                        {
+                            GameObject effectObject = Instantiate(EffectHit, hit.point, Quaternion.identity);
+                            Destroy(effectObject, 1);
+                        }
                         if (hit.collider.tag == "Head") {
                             GameObject enemy = hit.collider.transform.root.gameObject;
-                            enemy.GetComponent<AI>().life -= 3;
+                            enemy.GetComponent<AI>().life -= 6;
+                            Debug.Log("Life: " + enemy.GetComponent<AI>().life);
+                        }
+                        if (hit.collider.tag == "Body")
+                        {
+                            GameObject enemy = hit.collider.transform.root.gameObject;
+                            enemy.GetComponent<AI>().life -= 2;
+                            Debug.Log("Life: " + enemy.GetComponent<AI>().life);
+                         
+                        }
+                        if (hit.collider.tag == "Extremities")
+                        {
+                            GameObject enemy = hit.collider.transform.root.gameObject;
+                            enemy.GetComponent<AI>().life -= 1;
+                            Debug.Log("Life: " + enemy.GetComponent<AI>().life);
+                           
                         }
                         hit.collider.GetComponent<Rigidbody>().AddForce(hit.normal * -BulletForce);
                     }
