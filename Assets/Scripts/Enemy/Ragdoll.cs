@@ -16,7 +16,7 @@ public class Ragdoll : MonoBehaviour
         SetEnabled(ragdollDisable);
     }
 
-    void SetEnabled(bool enabled)
+    public void SetEnabled(bool enabled)
     {
         bool isKinematic = !enabled;
         foreach (Rigidbody rigidbody in rigidbodies)
@@ -29,15 +29,15 @@ public class Ragdoll : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ragdollDisable = true;
-            SetEnabled(ragdollDisable);
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            ragdollDisable = false;
-            SetEnabled(ragdollDisable);
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    ragdollDisable = true;
+        //    SetEnabled(ragdollDisable);
+        //}
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    ragdollDisable = false;
+        //    SetEnabled(ragdollDisable);
+        //}
     }
 }

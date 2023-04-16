@@ -16,6 +16,7 @@ public class ShotRaycast : MonoBehaviour
     public Camera cam;
     public Camera camWeapon;
     public CamaraMovement camaraMovement;
+    private AI ai;
     private bool aim = false;
     
     void Update()
@@ -56,13 +57,17 @@ public class ShotRaycast : MonoBehaviour
                 }
                 if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Range))
                 {
-                    Debug.Log("Objeto colisionado: " + hit.collider.name);
 
                     GameObject effectObject = Instantiate(EffectHit, hit.point, Quaternion.identity);
                     Destroy(effectObject, 1);
 
                     if (hit.collider.GetComponent<Rigidbody>() != null)
                     {
+                        Debug.Log("Objeto colisionado: " + hit.collider.name + " tag: " + hit.collider.tag);
+                        if (hit.collider.tag == "Head") {
+                            GameObject enemy = hit.collider.transform.root.gameObject;
+                            enemy.GetComponent<AI>().life -= 3;
+                        }
                         hit.collider.GetComponent<Rigidbody>().AddForce(hit.normal * -BulletForce);
                     }
                 }

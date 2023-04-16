@@ -24,3 +24,6 @@
 * Añadido un tiempo de recarga de la granada.
 * Añadido ragdoll al modelo del enemigo.
 * Añadida una IA para el enemigo.
+9. *Dia 9*
+* Añadido medidor de vida a los enemigos, dependiendo en que parte del cuerpo se golpee quite mas vida o menos.
+Cuando la vida llega a 0 se activa el ragdoll y se elimina el enemigo a los 45 segundos

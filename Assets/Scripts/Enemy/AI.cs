@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 
 public class AI : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class AI : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Transform[] destinations;
     private int i = 0;
+    public int life = 3;
     public float distanceDestination = 2f;
     private GameObject player;
     //public bool followPlayer;
@@ -24,6 +27,11 @@ public class AI : MonoBehaviour
 
     void Update()
     {
+        if (life <=0 ) {
+            ragdollScript.ragdollDisable = true;
+            ragdollScript.SetEnabled(ragdollScript.ragdollDisable);
+                Destroy(this.transform.root.gameObject,45);
+        }
         if (!ragdollScript.ragdollDisable)
         {
             distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
