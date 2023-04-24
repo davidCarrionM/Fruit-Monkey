@@ -25,5 +25,6 @@
 * Añadido ragdoll al modelo del enemigo.
 * Añadida una IA para el enemigo.
 9. *Dia 9*
-* Añadido medidor de vida a los enemigos, dependiendo en que parte del cuerpo se golpee quite mas vida o menos.
-Cuando la vida llega a 0 se activa el ragdoll y se elimina el enemigo a los 45 segundos
+* Añadido medidor de vida a los enemigos, dependiendo en que parte del cuerpo se golpee quite mas vida o menos. Cuando la vida llega a 0 se activa el ragdoll y se elimina el enemigo a los 45 segundos
+10. *Dia 10*
+* Añadida la fruta con su correspondiente animacion, el objeto de la fruta cambia su modelo de forma aleatoria
