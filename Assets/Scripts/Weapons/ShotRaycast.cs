@@ -57,9 +57,6 @@ public class ShotRaycast : MonoBehaviour
                 }
                 if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Range))
                 {
-
-                    
-
                     if (hit.collider.GetComponent<Rigidbody>() != null)
                     {
                         Debug.Log("Objeto colisionado: " + hit.collider.name + " tag: " + hit.collider.tag);

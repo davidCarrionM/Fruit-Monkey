@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private void Update()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("NO DESTRUYE FRUTA");
+
+        if (other.gameObject.CompareTag("Fruit"))
+        {
+            Debug.Log("DESTRUYE FRUTA");
+            Destroy(other.gameObject);
+        }
     }
 }

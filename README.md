@@ -28,3 +28,5 @@
 * Añadido medidor de vida a los enemigos, dependiendo en que parte del cuerpo se golpee quite mas vida o menos. Cuando la vida llega a 0 se activa el ragdoll y se elimina el enemigo a los 45 segundos
 10. *Dia 10*
 * Añadida la fruta con su correspondiente animacion, el objeto de la fruta cambia su modelo de forma aleatoria
+11. *Dia 11*
+* Añadida a la fruta un efecto de particulas y se añadio la funcionalidad de poder ser cogida por el personaje

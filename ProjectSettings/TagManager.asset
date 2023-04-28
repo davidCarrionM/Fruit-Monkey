@@ -9,6 +9,7 @@ TagManager:
   - Head
   - Body
   - Extremities
+  - Fruit
   layers:
   - Default
   - TransparentFX
