@@ -30,3 +30,7 @@
 * Añadida la fruta con su correspondiente animacion, el objeto de la fruta cambia su modelo de forma aleatoria
 11. *Dia 11*
 * Añadida a la fruta un efecto de particulas y se añadio la funcionalidad de poder ser cogida por el personaje
+12. *Dia 12*
+* Añadido el GameManager para gestionar cuantas frutas quedan por recoger y cada vez que recoges una se reduce
+* Añadido una brujula que se mueve dependiendo donde este viendo el jugador, donde apareceran las frutas que faltan por recoger
+* Añadido en la brujula las frutas que faltan por recoger y sus localizaciones

@@ -3754,8 +3754,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a5917feb095bd459581d241fcc6931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 5471429922078047924, guid: f86af3ff38f03cd428de25a383ff8e75,
+    type: 3}
   compassImage: {fileID: 650368832}
   player: {fileID: 1163505174}
+  maxDistance: 100
 --- !u!114 &650368832
 MonoBehaviour:
   m_ObjectHideFlags: 0
