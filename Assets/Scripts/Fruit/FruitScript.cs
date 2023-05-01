@@ -24,7 +24,7 @@ public class FruitScript : MonoBehaviour
             GameManager.Instance.fruits -= 1;
             GameObject efecto = Instantiate(Effect, gameObject.transform.position, Quaternion.identity);
             Destroy(efecto, 5);
-            Destroy(transform.parent.gameObject, 0.5f);
+            Destroy(transform.parent.gameObject);
         }
     }
 }
