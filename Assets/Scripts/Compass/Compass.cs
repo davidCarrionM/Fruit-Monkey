@@ -9,6 +9,7 @@ public class Compass : MonoBehaviour
     public RawImage compassImage;
     public Transform player;
     List<FruitMarker> fruitMarkers = new List<FruitMarker>();
+    List<FruitMarker> deleteFruits = new List<FruitMarker>();
     List<GameObject> icons = new List<GameObject>();
     FruitMarker[] aux;
     float compassUnit;
@@ -27,7 +28,6 @@ public class Compass : MonoBehaviour
 
     private void Update()
     {
-
         compassImage.uvRect = new Rect(player.localEulerAngles.y / 360f, 0f, 1f, 1f);
         if (fruitMarkers.Count > 0)
         {
@@ -48,6 +48,10 @@ public class Compass : MonoBehaviour
                     }
                     //marker.image.rectTransform.localScale = Vector3.one * scale;
                 }
+            }
+            foreach (FruitMarker marker in deleteFruits)
+            {
+                fruitMarkers.Remove(marker);
             }
         }
     }
@@ -89,6 +93,7 @@ public class Compass : MonoBehaviour
                 }
             }
         }
-        fruitMarkers.Remove(marker);
+
+        deleteFruits.Add(marker);
     }
 }

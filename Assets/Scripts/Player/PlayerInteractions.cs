@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
+    public Transform spawnPosition;
 
     private void Update()
     {
@@ -11,12 +12,15 @@ public class PlayerInteractions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("NO DESTRUYE FRUTA");
 
-        if (other.gameObject.CompareTag("Fruit"))
+        if (other.gameObject.CompareTag("DeathFloor"))
         {
-            Debug.Log("DESTRUYE FRUTA");
-            Destroy(other.gameObject);
+            GameManager.Instance.loseLife(5);
+
+            GetComponent<CharacterController>().enabled = false;
+            gameObject.transform.position = spawnPosition.position;
+            GetComponent<CharacterController>().enabled = true;
+
         }
     }
 }

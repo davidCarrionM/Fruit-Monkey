@@ -64,6 +64,11 @@ public class ShotRaycast : MonoBehaviour
                         {
                             GameObject bloodObject = Instantiate(bloodEfect, hit.point, Quaternion.identity);
                             Destroy(bloodObject, 1);
+                            if (Weapon.tag == "Knife")
+                            {
+                                GameObject enemy = hit.collider.transform.root.gameObject;
+                                enemy.GetComponent<AI>().life -= 10;
+                            }
                         }
                         else
                         {

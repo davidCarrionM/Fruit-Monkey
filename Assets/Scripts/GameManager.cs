@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Text fruitText;
+    public Text lifeText;
     public static GameManager Instance { get; private set; }
     public int fruits = -1;
+    public int life = 100;
 
     private void Start()
     {
@@ -23,5 +25,11 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         fruitText.text = fruits.ToString()+"\n";
+        lifeText.text = life.ToString()+"\n";
+    }
+
+    public void loseLife(int lifeToLose)
+    {
+        life-=lifeToLose;
     }
 }

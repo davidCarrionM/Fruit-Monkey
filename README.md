@@ -34,3 +34,7 @@
 * Añadido el GameManager para gestionar cuantas frutas quedan por recoger y cada vez que recoges una se reduce
 * Añadido una brujula que se mueve dependiendo donde este viendo el jugador, donde apareceran las frutas que faltan por recoger
 * Añadido en la brujula las frutas que faltan por recoger y sus localizaciones
+13. *Dia 13*
+* Arreglado problema a la hora de coger las frutas y eliminarlas del array
+* Añadida la funcionalidad del cuchillo
+* Añadido un DeathFloor por si el jugador se sale del mapa que reaparezca arriba, y con ello añadida la vida y el poder perderla
