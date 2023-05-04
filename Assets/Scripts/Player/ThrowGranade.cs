@@ -12,6 +12,7 @@ public class ThrowGranade : MonoBehaviour
     public Transform spawnGranade;
     public Transform cam;
     public GameObject granade;
+    private float bombTime = 0.0f;
 
     void Update()
     {
@@ -21,8 +22,11 @@ public class ThrowGranade : MonoBehaviour
             {
                 GranadeThrow();
                 shotRateTime = Time.time + ShotRate;
+                bombTime = 0.0f;
             }
         }
+            bombTime = shotRateTime - Time.time;
+            GameManager.Instance.bomb = bombTime;
     }
     public void GranadeThrow()
     {

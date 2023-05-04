@@ -38,3 +38,4 @@
 * Arreglado problema a la hora de coger las frutas y eliminarlas del array
 * Añadida la funcionalidad del cuchillo
 * Añadido un DeathFloor por si el jugador se sale del mapa que reaparezca arriba, y con ello añadida la vida y el poder perderla
+* Añadido un temporizador del tiempo restante para utilizar la bomba
