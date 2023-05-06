@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteractions : MonoBehaviour
 {
     public Transform spawnPosition;
+    public GameObject spawnCanvas;
 
     private void Update()
     {
@@ -20,7 +21,17 @@ public class PlayerInteractions : MonoBehaviour
             GetComponent<CharacterController>().enabled = false;
             gameObject.transform.position = spawnPosition.position;
             GetComponent<CharacterController>().enabled = true;
-
+            StartCoroutine(CanvasSpawn());
         }
+
     }
+
+    IEnumerator CanvasSpawn()
+    {
+        spawnCanvas.GetComponent<Animator>().Play("respawn");
+        yield return new WaitForSeconds(4f);
+        spawnCanvas.GetComponent<Animator>().Play("New State");
+    }
+
+    
 }

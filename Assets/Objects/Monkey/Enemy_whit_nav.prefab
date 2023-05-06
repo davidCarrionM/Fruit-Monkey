@@ -1634,6 +1634,37 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &4777709892014734660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 135788831937617745}
+  m_Layer: 0
+  m_Name: RaycastPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &135788831937617745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4777709892014734660}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.048, y: 1.35, z: 0.514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4931882015972413453}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4889709612909525279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,7 +1741,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5547917360351799788}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.33712608, y: 0.18481165, z: 0.32518822}
@@ -1885,6 +1916,7 @@ Transform:
   - {fileID: 1368193480292535469}
   - {fileID: 1368193480279089858}
   - {fileID: 1368193480292366703}
+  - {fileID: 135788831937617745}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1924,6 +1956,12 @@ MonoBehaviour:
   life: 3
   distanceDestination: 2
   distanceToFollow: 10
+  Range: 0.5
+  RaycastPosition: {fileID: 135788831937617745}
+  ShotRate: 1
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!95 &5708946107017202360
 Animator:
   serializedVersion: 5

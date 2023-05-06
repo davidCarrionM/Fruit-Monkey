@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public Camera cam;
     private Camera camReference;
     //***********
+    public GameObject damageCanvas;
 
 
     void Update()
@@ -84,6 +85,24 @@ public class PlayerMovement : MonoBehaviour
                 isGround = true;
             }
         }
+
+    }
+    public void Damage()
+    {
+        StartCoroutine(DamageA());
+        StartCoroutine(DamageCanvasA());
     }
 
+    IEnumerator DamageA()
+    {
+        cam.GetComponent<Animator>().Play("Damage");
+        yield return new WaitForSeconds(0.40f);
+        cam.GetComponent<Animator>().Play("New State");
+    }
+    IEnumerator DamageCanvasA()
+    {
+        damageCanvas.GetComponent<Animator>().Play("DamageCanvas");
+        yield return new WaitForSeconds(0.40f);
+        damageCanvas.GetComponent<Animator>().Play("New State");
+    }
 }

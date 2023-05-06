@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,17 +28,26 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        fruitText.text = fruits.ToString()+"\n";
-        lifeText.text = life.ToString()+"\n";
+        if (fruits.ToString() != fruitText.text)
+        {
+            fruitText.text = fruits.ToString()+"\n";
+        }
+        if (life.ToString() != lifeText.text)
+        {
+            lifeText.text = life.ToString() + "\n";
+        }
+        if (bomb.ToString() != bombText.text) {
+
         if (bomb <= 0)
         {
             bombText.text = "!!!" + "\n";
         }
         else
         {
-        bombText.text =  bomb.ToString("0.##") + "\n";
+            bombText.text =  bomb.ToString("0.#") + "\n";
         }
 
+        }
     }
 
     public void loseLife(int lifeToLose)
