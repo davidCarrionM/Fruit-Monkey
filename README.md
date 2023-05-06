@@ -42,3 +42,4 @@
 14. *Dia 14*
 * Mejorada la mecanica del enemigo para que te pueda golpear mejor ya que a veces aunque el raycast chocara con el personaje no ocurria nada, tambien se añadieron mas raycast para una mejor captura del golpeo
 * Añadida la animacion de golpeo al personaje
+* Comienzo a crear el mapa del juego
