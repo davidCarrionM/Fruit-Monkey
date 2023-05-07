@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteractions : MonoBehaviour
 {
     public Transform spawnPosition;
+    public Transform spawnSpikesTuto;
     public GameObject spawnCanvas;
 
     private void Update()
@@ -23,7 +24,15 @@ public class PlayerInteractions : MonoBehaviour
             GetComponent<CharacterController>().enabled = true;
             StartCoroutine(CanvasSpawn());
         }
+        if (other.gameObject.CompareTag("SpikesTuto"))
+        {
+            GameManager.Instance.loseLife(5);
 
+            GetComponent<CharacterController>().enabled = false;
+            gameObject.transform.position = spawnSpikesTuto.position;
+            GetComponent<CharacterController>().enabled = true;
+            StartCoroutine(CanvasSpawn());
+        }
     }
 
     IEnumerator CanvasSpawn()
