@@ -6,6 +6,7 @@ public class spawn : MonoBehaviour
 {
     public float spawnRate = 5f;
     private float spawnRateTime = 0f;
+    public Transform[] destinations;
     public GameObject enemy;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,8 @@ public class spawn : MonoBehaviour
     {
         if (Time.time > spawnRateTime)
         {
-            Instantiate(enemy, this.transform.position, this.transform.rotation);
+            GameObject enemyAux = Instantiate(enemy, this.transform.position, this.transform.rotation);
+            enemyAux.GetComponent<AI>().destinations = destinations;
             spawnRateTime = Time.time + spawnRate;
         }
     }

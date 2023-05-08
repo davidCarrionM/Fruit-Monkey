@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -27,9 +28,11 @@ public class AI : MonoBehaviour
     private float shotRateTime = 0f;
     private Vector3[] vectores = new Vector3[9];
     public LayerMask playerMask;
+    System.Random random = new System.Random();
     void Start()
     {
-        navMeshAgent.destination = destinations[0].position;
+        
+        navMeshAgent.destination = destinations[random.Next(0, destinations.Length)].position;
         player = FindObjectOfType<PlayerMovement>().gameObject;
         ragdollScript = GetComponent<Ragdoll>();
         speedRunning = navMeshAgent.speed * 3;
@@ -106,14 +109,15 @@ public class AI : MonoBehaviour
         navMeshAgent.destination = destinations[i].position;
         if (Vector3.Distance(transform.position, destinations[i].position) < distanceDestination)
         {
-            if (i < destinations.Length - 1)
-            {
-                i++;
-            }
-            else
-            {
-                i = 0;
-            }
+            i = random.Next(0, destinations.Length);
+            //if (i < destinations.Length - 1)
+            //{
+            //    i++;
+            //}
+            //else
+            //{
+            //    i = 0;
+            //}
 
         }
         navMeshAgent.speed = speedNormal;
