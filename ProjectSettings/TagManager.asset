@@ -12,6 +12,8 @@ TagManager:
   - Fruit
   - DeathFloor
   - SpikesTuto
+  - SpawnEnemy
+  - WaterFloor
   layers:
   - Default
   - TransparentFX

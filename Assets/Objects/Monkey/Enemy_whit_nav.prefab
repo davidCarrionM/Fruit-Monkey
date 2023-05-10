@@ -1954,7 +1954,7 @@ MonoBehaviour:
   - {fileID: 1368193480279089858}
   - {fileID: 1368193480292366703}
   life: 3
-  distanceDestination: 2
+  distanceDestination: 10
   distanceToFollow: 10
   Range: 0.5
   RaycastPosition: {fileID: 135788831937617745}

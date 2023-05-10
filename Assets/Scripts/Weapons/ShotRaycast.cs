@@ -18,7 +18,7 @@ public class ShotRaycast : MonoBehaviour
     public Camera camWeapon;
     public CamaraMovement camaraMovement;
     private bool aim = false;
-    
+
     void Update()
     {
         if (Weapon.tag == "Gun")
@@ -75,7 +75,8 @@ public class ShotRaycast : MonoBehaviour
                             GameObject effectObject = Instantiate(EffectHit, hit.point, Quaternion.identity);
                             Destroy(effectObject, 1);
                         }
-                        if (hit.collider.tag == "Head") {
+                        if (hit.collider.tag == "Head")
+                        {
                             GameObject enemy = hit.collider.transform.root.gameObject;
                             enemy.GetComponent<AI>().life -= 6;
                             Debug.Log("Life: " + enemy.GetComponent<AI>().life);
@@ -85,17 +86,26 @@ public class ShotRaycast : MonoBehaviour
                             GameObject enemy = hit.collider.transform.root.gameObject;
                             enemy.GetComponent<AI>().life -= 2;
                             Debug.Log("Life: " + enemy.GetComponent<AI>().life);
-                         
+
                         }
                         if (hit.collider.tag == "Extremities")
                         {
                             GameObject enemy = hit.collider.transform.root.gameObject;
                             enemy.GetComponent<AI>().life -= 1;
                             Debug.Log("Life: " + enemy.GetComponent<AI>().life);
-                           
+
                         }
                         hit.collider.GetComponent<Rigidbody>().AddForce(hit.normal * -BulletForce);
                     }
+                    if (hit.collider.tag == "SpawnEnemy")
+                    {
+                        if (Weapon.tag == "Knife")
+                        {
+                            GameObject spawn = hit.collider.transform.gameObject;
+                            spawn.GetComponent<spawn>().life -= 1;
+                        }
+                    }
+
                 }
                 shotRateTime = Time.time + ShotRate;
             }
@@ -125,7 +135,7 @@ public class ShotRaycast : MonoBehaviour
                 yield return new WaitForSeconds(0.15f);
                 if (aim)
                 {
-                Weapon.GetComponent<Animator>().Play("AimIdle");
+                    Weapon.GetComponent<Animator>().Play("AimIdle");
                 }
                 else
                 {

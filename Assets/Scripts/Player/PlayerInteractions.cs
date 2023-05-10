@@ -6,6 +6,7 @@ public class PlayerInteractions : MonoBehaviour
 {
     public Transform spawnPosition;
     public Transform spawnSpikesTuto;
+    public Transform spawnWater;
     public GameObject spawnCanvas;
 
     private void Update()
@@ -18,7 +19,7 @@ public class PlayerInteractions : MonoBehaviour
         if (other.gameObject.CompareTag("DeathFloor"))
         {
             GameManager.Instance.loseLife(5);
-
+            Debug.Log("DEATH FLOOR");
             GetComponent<CharacterController>().enabled = false;
             gameObject.transform.position = spawnPosition.position;
             GetComponent<CharacterController>().enabled = true;
@@ -27,9 +28,18 @@ public class PlayerInteractions : MonoBehaviour
         if (other.gameObject.CompareTag("SpikesTuto"))
         {
             GameManager.Instance.loseLife(5);
-
+            Debug.Log("SPIKES FLOOR");
             GetComponent<CharacterController>().enabled = false;
             gameObject.transform.position = spawnSpikesTuto.position;
+            GetComponent<CharacterController>().enabled = true;
+            StartCoroutine(CanvasSpawn());
+        }
+        if (other.gameObject.CompareTag("WaterFloor"))
+        {
+            GameManager.Instance.loseLife(5);
+            Debug.Log("WATER FLOOR");
+            GetComponent<CharacterController>().enabled = false;
+            gameObject.transform.position = spawnWater.position;
             GetComponent<CharacterController>().enabled = true;
             StartCoroutine(CanvasSpawn());
         }

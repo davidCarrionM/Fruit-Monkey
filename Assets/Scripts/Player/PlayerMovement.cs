@@ -73,6 +73,10 @@ public class PlayerMovement : MonoBehaviour
             characterControler.Move(move * speed * Time.deltaTime);
 
             velocity.y += gravity * Time.deltaTime;
+            if (velocity.y<=-15 )
+            {
+                velocity.y = -15;
+            }
             characterControler.Move(velocity * Time.deltaTime);
             
         }

@@ -45,3 +45,8 @@
 * Comienzo a crear el mapa del juego
 15. *Dia 15*
 * Creamos la mazmorra donde empezara el jugador y donde se explicaran los conceptos basicos del juego.
+16. *Dia 16*
+* Acabada la mazmorra donde empezara el jugador y donde se explicaran los conceptos basicos del juego.
+17. *Dia 17*
+* Mejorado el spawn para que si el jugador no esta cerca no genere mas enemigos y asi ahorrar recursos.
+* Creacion de mapa
