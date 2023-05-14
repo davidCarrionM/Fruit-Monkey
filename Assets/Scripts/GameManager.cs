@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         fruits = GameObject.FindGameObjectsWithTag("Fruit").Length;
         Debug.Log("Frutas Total: " + GameObject.FindGameObjectsWithTag("Fruit").Length);
+        pause = false;
     }
 
     private void Awake()
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        if (fruits <= 34)
+        if (fruits <= 0)
         {
             SceneManager.LoadScene("Win");
         }

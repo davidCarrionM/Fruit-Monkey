@@ -42,74 +42,76 @@ public class AI : MonoBehaviour
 
     void Update()
     {
-        vectores[0] = RaycastPosition.forward;
-        vectores[1] = (RaycastPosition.forward + RaycastPosition.right);
-        vectores[2] = (RaycastPosition.forward - RaycastPosition.right);
-
-        vectores[3] = (RaycastPosition.forward + RaycastPosition.up);
-        vectores[4] = (RaycastPosition.forward + RaycastPosition.right + RaycastPosition.up);
-        vectores[5] = (RaycastPosition.forward - RaycastPosition.right + RaycastPosition.up);
-
-        vectores[6] = (RaycastPosition.forward - RaycastPosition.up);
-        vectores[7] = (RaycastPosition.forward + RaycastPosition.right - RaycastPosition.up);
-        vectores[8] = (RaycastPosition.forward - RaycastPosition.right - RaycastPosition.up);
-        if (life <= 0)
+        if (!GameManager.Instance.pause)
         {
-            ragdollScript.ragdollDisable = true;
-            ragdollScript.SetEnabled(ragdollScript.ragdollDisable);
-            if (auxManager)
-            {
-                GameManager.Instance.totalEnemies -= 1;
-                auxManager = false;
-            }
-            Destroy(this.transform.root.gameObject, 15);
-        }
-        else
-        {
-            for (int i = 0; i < vectores.Length - 1; i++)
-            {
+            vectores[0] = RaycastPosition.forward;
+            vectores[1] = (RaycastPosition.forward + RaycastPosition.right);
+            vectores[2] = (RaycastPosition.forward - RaycastPosition.right);
 
+            vectores[3] = (RaycastPosition.forward + RaycastPosition.up);
+            vectores[4] = (RaycastPosition.forward + RaycastPosition.right + RaycastPosition.up);
+            vectores[5] = (RaycastPosition.forward - RaycastPosition.right + RaycastPosition.up);
 
-                RaycastHit hit;
-                if (Physics.Raycast(RaycastPosition.position, vectores[i], out hit, Range,playerMask))
+            vectores[6] = (RaycastPosition.forward - RaycastPosition.up);
+            vectores[7] = (RaycastPosition.forward + RaycastPosition.right - RaycastPosition.up);
+            vectores[8] = (RaycastPosition.forward - RaycastPosition.right - RaycastPosition.up);
+            if (life <= 0)
+            {
+                ragdollScript.ragdollDisable = true;
+                ragdollScript.SetEnabled(ragdollScript.ragdollDisable);
+                if (auxManager)
                 {
-                    Debug.Log("Hit" + hit.collider.name);
+                    GameManager.Instance.totalEnemies -= 1;
+                    auxManager = false;
+                }
+                Destroy(this.transform.root.gameObject, 15);
+            }
+            else
+            {
+                for (int i = 0; i < vectores.Length - 1; i++)
+                {
 
-                    if (hit.collider.gameObject.tag == "Player")
+
+                    RaycastHit hit;
+                    if (Physics.Raycast(RaycastPosition.position, vectores[i], out hit, Range, playerMask))
                     {
-                        //Debug.Log("Vector Usado" + i);
+                        Debug.Log("Hit" + hit.collider.name);
 
-                        if (Time.time > shotRateTime)
+                        if (hit.collider.gameObject.tag == "Player")
                         {
-                            GameManager.Instance.loseLife(10);
-                            shotRateTime = Time.time + ShotRate;
-                            player = hit.collider.gameObject;
+                            //Debug.Log("Vector Usado" + i);
 
-                            player.GetComponent<PlayerMovement>().Damage();
-                            break;
+                            if (Time.time > shotRateTime)
+                            {
+                                GameManager.Instance.loseLife(10);
+                                shotRateTime = Time.time + ShotRate;
+                                player = hit.collider.gameObject;
+
+                                player.GetComponent<PlayerMovement>().Damage();
+                                break;
+                            }
                         }
                     }
                 }
             }
-        }
-        if (!ragdollScript.ragdollDisable)
-        {
-            distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer <= distanceToFollow)
+            if (!ragdollScript.ragdollDisable)
             {
-                FollowPlayer();
+                distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+                if (distanceToPlayer <= distanceToFollow)
+                {
+                    FollowPlayer();
+                }
+                else
+                {
+                    EnemyPath();
+                }
             }
             else
             {
-                EnemyPath();
+                navMeshAgent.isStopped = true;
             }
         }
-        else
-        {
-            navMeshAgent.isStopped = true;
-        }
     }
-
     public void EnemyPath()
     {
         navMeshAgent.destination = destinations[i].position;

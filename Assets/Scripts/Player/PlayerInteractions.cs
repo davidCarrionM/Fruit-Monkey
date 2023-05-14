@@ -52,6 +52,7 @@ public class PlayerInteractions : MonoBehaviour
 
     IEnumerator CanvasSpawn()
     {
+
         spawnCanvas.GetComponent<Animator>().Play("respawn");
         yield return new WaitForSeconds(4f);
         spawnCanvas.GetComponent<Animator>().Play("New State");

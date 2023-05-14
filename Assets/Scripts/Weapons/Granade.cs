@@ -19,11 +19,14 @@ public class Granade : MonoBehaviour
 
     void Update()
     {
-        countdown -= Time.deltaTime;
-        if (countdown<=0 && exploded == false)
+        if (!GameManager.Instance.pause)
         {
-            Explote();
-            exploded = true;
+            countdown -= Time.deltaTime;
+            if (countdown <= 0 && exploded == false)
+            {
+                Explote();
+                exploded = true;
+            }
         }
     }
 

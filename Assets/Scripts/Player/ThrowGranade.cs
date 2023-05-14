@@ -16,17 +16,20 @@ public class ThrowGranade : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (!GameManager.Instance.pause)
         {
-            if (Time.time > shotRateTime)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                GranadeThrow();
-                shotRateTime = Time.time + ShotRate;
-                bombTime = 0.0f;
+                if (Time.time > shotRateTime)
+                {
+                    GranadeThrow();
+                    shotRateTime = Time.time + ShotRate;
+                    bombTime = 0.0f;
+                }
             }
-        }
             bombTime = shotRateTime - Time.time;
             GameManager.Instance.bomb = bombTime;
+        }
     }
     public void GranadeThrow()
     {
