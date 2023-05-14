@@ -9,6 +9,11 @@ public class PlayerInteractions : MonoBehaviour
     public Transform spawnWater;
     public GameObject spawnCanvas;
 
+    private void Start()
+    {
+        StartCoroutine(CanvasSpawn());
+    }
+
     private void Update()
     {
     }

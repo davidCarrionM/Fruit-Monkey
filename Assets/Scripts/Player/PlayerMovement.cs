@@ -30,66 +30,70 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (!GameManager.Instance.pause)
         {
-            speed = speed * 1.5f;
-        }
-        if(Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            speed = speed / 1.5f;
-        }
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            speed = speed / 2.2f;
-            transform.localScale = new Vector3(1f,0.5f,1f);
-            cam.transform.localScale = new Vector3(1f,2f,1f);
-        }
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            speed = speed * 2.2f;
-            transform.localScale = new Vector3(1f, 1f, 1f);
-            cam.transform.localScale = new Vector3(1f,1f,1f);
-        }
-        if (!isClimbing)
-        {
-            
-            isGround = Physics.CheckSphere(groundCheck.position, sphereRadius, groundMask);
 
-            if (isGround && velocity.y < 0)
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                velocity.y = -2f;
-                velocity.x = 0;
-                velocity.z = 0;
+                speed = speed * 1.5f;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                speed = speed / 1.5f;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                speed = speed / 2.2f;
+                transform.localScale = new Vector3(1f, 0.5f, 1f);
+                cam.transform.localScale = new Vector3(1f, 2f, 1f);
+            }
+            if (Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                speed = speed * 2.2f;
+                transform.localScale = new Vector3(1f, 1f, 1f);
+                cam.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            if (!isClimbing)
+            {
+
+                isGround = Physics.CheckSphere(groundCheck.position, sphereRadius, groundMask);
+
+                if (isGround && velocity.y < 0)
+                {
+                    velocity.y = -2f;
+                    velocity.x = 0;
+                    velocity.z = 0;
+                }
+
+                float x = Input.GetAxis("Horizontal");
+                float z = Input.GetAxis("Vertical");
+                Vector3 move = transform.right * x + transform.forward * z;
+                if (isGround && Input.GetKeyDown(KeyCode.Space))
+                {
+                    velocity.y = Mathf.Sqrt(jumpHeigh * -2 * gravity);
+                }
+
+                characterControler.Move(move * speed * Time.deltaTime);
+
+                velocity.y += gravity * Time.deltaTime;
+                if (velocity.y <= -15)
+                {
+                    velocity.y = -15;
+                }
+                characterControler.Move(velocity * Time.deltaTime);
+
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    isClimbing = false;
+                    velocity.y = Mathf.Sqrt(jumpHeigh * -2 * gravity);
+                    isGround = true;
+                }
             }
 
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
-            Vector3 move = transform.right * x + transform.forward * z;
-            if (isGround && Input.GetKeyDown(KeyCode.Space))
-            {
-                velocity.y = Mathf.Sqrt(jumpHeigh * -2 * gravity);
-            }
-
-            characterControler.Move(move * speed * Time.deltaTime);
-
-            velocity.y += gravity * Time.deltaTime;
-            if (velocity.y<=-15 )
-            {
-                velocity.y = -15;
-            }
-            characterControler.Move(velocity * Time.deltaTime);
-            
         }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                isClimbing = false;
-                velocity.y = Mathf.Sqrt(jumpHeigh * -2 * gravity);
-                isGround = true;
-            }
-        }
-
     }
     public void Damage()
     {
@@ -109,4 +113,5 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.40f);
         damageCanvas.GetComponent<Animator>().Play("New State");
     }
+
 }

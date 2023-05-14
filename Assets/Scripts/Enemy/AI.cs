@@ -28,6 +28,7 @@ public class AI : MonoBehaviour
     private float shotRateTime = 0f;
     private Vector3[] vectores = new Vector3[9];
     public LayerMask playerMask;
+    private bool auxManager = true;
     System.Random random = new System.Random();
     void Start()
     {
@@ -56,7 +57,12 @@ public class AI : MonoBehaviour
         {
             ragdollScript.ragdollDisable = true;
             ragdollScript.SetEnabled(ragdollScript.ragdollDisable);
-            Destroy(this.transform.root.gameObject, 45);
+            if (auxManager)
+            {
+                GameManager.Instance.totalEnemies -= 1;
+                auxManager = false;
+            }
+            Destroy(this.transform.root.gameObject, 15);
         }
         else
         {

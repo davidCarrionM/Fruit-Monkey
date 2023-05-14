@@ -22,6 +22,10 @@ public class FruitScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.Instance.fruits -= 1;
+            if (GameManager.Instance.life < 100)
+            {
+                GameManager.Instance.life += 5;
+            }
             GameObject efecto = Instantiate(Effect, gameObject.transform.position, Quaternion.identity);
             Destroy(efecto, 5);
             Destroy(transform.parent.gameObject);

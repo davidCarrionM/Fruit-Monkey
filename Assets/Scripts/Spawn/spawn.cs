@@ -42,28 +42,33 @@ public class spawn : MonoBehaviour
             }
             else
             {
-                if (Time.time > spawnRateTime)
+                if (GameManager.Instance.totalEnemies <= GameManager.Instance.maxEnemies)
                 {
-                    GameObject enemyAux = Instantiate(enemy, this.transform.position, this.transform.rotation);
-                    enemyAux.GetComponent<AI>().destinations = destinations;
-                    spawnRateTime = Time.time + spawnRate;
-                }
-                if (life < 3)
-                {
-                    if (life == 2)
+
+                    if (Time.time > spawnRateTime)
                     {
-                        material.material.color = Color.green;
+                        GameObject enemyAux = Instantiate(enemy, this.transform.position, this.transform.rotation);
+                        GameManager.Instance.totalEnemies += 1;
+                        enemyAux.GetComponent<AI>().destinations = destinations;
+                        spawnRateTime = Time.time + spawnRate;
                     }
-                    else
+                    if (life < 3)
                     {
-                        if (life == 1)
+                        if (life == 2)
                         {
-                            material.material.color = Color.red;
+                            material.material.color = Color.green;
                         }
                         else
                         {
-                            material.material.color = Color.black;
-                            broken = true;
+                            if (life == 1)
+                            {
+                                material.material.color = Color.red;
+                            }
+                            else
+                            {
+                                material.material.color = Color.black;
+                                broken = true;
+                            }
                         }
                     }
                 }

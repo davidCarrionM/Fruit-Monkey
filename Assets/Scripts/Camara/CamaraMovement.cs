@@ -14,13 +14,16 @@ public class CamaraMovement : MonoBehaviour
 
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * Sensibility * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * Sensibility * Time.deltaTime;
+        if (!GameManager.Instance.pause)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * Sensibility * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * Sensibility * Time.deltaTime;
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xRotation,0,0);
-        PlayerBody.Rotate(Vector3.up * mouseX);
+            transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+            PlayerBody.Rotate(Vector3.up * mouseX);
+        }
     }
 }

@@ -50,3 +50,7 @@
 17. *Dia 17*
 * Mejorado el spawn para que si el jugador no esta cerca no genere mas enemigos y asi ahorrar recursos.
 * Creacion de mapa
+18. *Dia 18*
+* Finalizacion del mapa.
+19. *Dia 19*
+* Añadido el menu principal, el menu de pausa, el menu de victoria y el menu de opciones.

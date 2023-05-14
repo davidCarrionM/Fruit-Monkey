@@ -21,95 +21,98 @@ public class ShotRaycast : MonoBehaviour
 
     void Update()
     {
-        if (Weapon.tag == "Gun")
+        if (!GameManager.Instance.pause)
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Weapon.tag == "Gun")
             {
-                aim = true;
-                Weapon.GetComponent<Animator>().Play("Aim");
-                cam.GetComponent<Animator>().Play("CamaraFov");
-                cam.fieldOfView = 30f;
-                camWeapon.fieldOfView = 40f;
-                camaraMovement.Sensibility = camaraMovement.Sensibility / 1.5f;
-                Range = Range * 1.3f;
-            }
-            if (Input.GetMouseButtonUp(1))
-            {
-                aim = false;
-                cam.fieldOfView = 80f;
-                Weapon.GetComponent<Animator>().Play("AimBack");
-                cam.GetComponent<Animator>().Play("CamaraFovBack");
-                camWeapon.fieldOfView = 60f;
-                camaraMovement.Sensibility = camaraMovement.Sensibility * 1.5f;
-                Range = Range / 1.3f;
-            }
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (Time.time > shotRateTime)
-            {
-                RaycastHit hit;
-                StartCoroutine(StartRecoil());
-                if (Weapon.tag == "Gun")
+                if (Input.GetMouseButtonDown(1))
                 {
-                    GameObject shotEffect = Instantiate(EffectShot, PositionShot.position, PositionShot.rotation);
-                    Destroy(shotEffect, 1);
+                    aim = true;
+                    Weapon.GetComponent<Animator>().Play("Aim");
+                    cam.GetComponent<Animator>().Play("CamaraFov");
+                    cam.fieldOfView = 30f;
+                    camWeapon.fieldOfView = 40f;
+                    camaraMovement.Sensibility = camaraMovement.Sensibility / 1.5f;
+                    Range = Range * 1.3f;
                 }
-                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Range))
+                if (Input.GetMouseButtonUp(1))
                 {
-                    if (hit.collider.GetComponent<Rigidbody>() != null)
+                    aim = false;
+                    cam.fieldOfView = 80f;
+                    Weapon.GetComponent<Animator>().Play("AimBack");
+                    cam.GetComponent<Animator>().Play("CamaraFovBack");
+                    camWeapon.fieldOfView = 60f;
+                    camaraMovement.Sensibility = camaraMovement.Sensibility * 1.5f;
+                    Range = Range / 1.3f;
+                }
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (Time.time > shotRateTime)
+                {
+                    RaycastHit hit;
+                    StartCoroutine(StartRecoil());
+                    if (Weapon.tag == "Gun")
                     {
-                        Debug.Log("Objeto colisionado: " + hit.collider.name + " tag: " + hit.collider.tag);
-                        if (hit.collider.tag == "Head" || hit.collider.tag == "Body" || hit.collider.tag == "Extremities")
+                        GameObject shotEffect = Instantiate(EffectShot, PositionShot.position, PositionShot.rotation);
+                        Destroy(shotEffect, 1);
+                    }
+                    if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Range))
+                    {
+                        if (hit.collider.GetComponent<Rigidbody>() != null)
                         {
-                            GameObject bloodObject = Instantiate(bloodEfect, hit.point, Quaternion.identity);
-                            Destroy(bloodObject, 1);
-                            if (Weapon.tag == "Knife")
+                            Debug.Log("Objeto colisionado: " + hit.collider.name + " tag: " + hit.collider.tag);
+                            if (hit.collider.tag == "Head" || hit.collider.tag == "Body" || hit.collider.tag == "Extremities")
+                            {
+                                GameObject bloodObject = Instantiate(bloodEfect, hit.point, Quaternion.identity);
+                                Destroy(bloodObject, 1);
+                                if (Weapon.tag == "Knife")
+                                {
+                                    GameObject enemy = hit.collider.transform.root.gameObject;
+                                    enemy.GetComponent<AI>().life -= 10;
+                                }
+                            }
+                            else
+                            {
+                                GameObject effectObject = Instantiate(EffectHit, hit.point, Quaternion.identity);
+                                Destroy(effectObject, 1);
+                            }
+                            if (hit.collider.tag == "Head")
                             {
                                 GameObject enemy = hit.collider.transform.root.gameObject;
-                                enemy.GetComponent<AI>().life -= 10;
+                                enemy.GetComponent<AI>().life -= 6;
+                                Debug.Log("Life: " + enemy.GetComponent<AI>().life);
+                            }
+                            if (hit.collider.tag == "Body")
+                            {
+                                GameObject enemy = hit.collider.transform.root.gameObject;
+                                enemy.GetComponent<AI>().life -= 2;
+                                Debug.Log("Life: " + enemy.GetComponent<AI>().life);
+
+                            }
+                            if (hit.collider.tag == "Extremities")
+                            {
+                                GameObject enemy = hit.collider.transform.root.gameObject;
+                                enemy.GetComponent<AI>().life -= 1;
+                                Debug.Log("Life: " + enemy.GetComponent<AI>().life);
+
+                            }
+                            hit.collider.GetComponent<Rigidbody>().AddForce(hit.normal * -BulletForce);
+                        }
+                        if (hit.collider.tag == "SpawnEnemy")
+                        {
+                            if (Weapon.tag == "Knife")
+                            {
+                                GameObject spawn = hit.collider.transform.gameObject;
+                                spawn.GetComponent<spawn>().life -= 1;
                             }
                         }
-                        else
-                        {
-                            GameObject effectObject = Instantiate(EffectHit, hit.point, Quaternion.identity);
-                            Destroy(effectObject, 1);
-                        }
-                        if (hit.collider.tag == "Head")
-                        {
-                            GameObject enemy = hit.collider.transform.root.gameObject;
-                            enemy.GetComponent<AI>().life -= 6;
-                            Debug.Log("Life: " + enemy.GetComponent<AI>().life);
-                        }
-                        if (hit.collider.tag == "Body")
-                        {
-                            GameObject enemy = hit.collider.transform.root.gameObject;
-                            enemy.GetComponent<AI>().life -= 2;
-                            Debug.Log("Life: " + enemy.GetComponent<AI>().life);
 
-                        }
-                        if (hit.collider.tag == "Extremities")
-                        {
-                            GameObject enemy = hit.collider.transform.root.gameObject;
-                            enemy.GetComponent<AI>().life -= 1;
-                            Debug.Log("Life: " + enemy.GetComponent<AI>().life);
-
-                        }
-                        hit.collider.GetComponent<Rigidbody>().AddForce(hit.normal * -BulletForce);
                     }
-                    if (hit.collider.tag == "SpawnEnemy")
-                    {
-                        if (Weapon.tag == "Knife")
-                        {
-                            GameObject spawn = hit.collider.transform.gameObject;
-                            spawn.GetComponent<spawn>().life -= 1;
-                        }
-                    }
-
+                    shotRateTime = Time.time + ShotRate;
                 }
-                shotRateTime = Time.time + ShotRate;
-            }
 
+            }
         }
     }
 
