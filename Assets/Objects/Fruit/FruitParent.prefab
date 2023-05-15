@@ -120,6 +120,8 @@ MonoBehaviour:
   - {fileID: 100000, guid: 6da9d5cde97ad394e97f1227e5fbf342, type: 3}
   size: 2.5
   Effect: {fileID: 8188812432485951723, guid: 5853f8614441474409e2c8dca5d93017, type: 3}
+  fuitSound: {fileID: 8300000, guid: 1a4c3745d0fbfa44484ea48817a1dbd9, type: 3}
+  monkeySound: {fileID: 8300000, guid: 9aabf288d22867c40b9e834b0104f09c, type: 3}
 --- !u!95 &4486671336587712791
 Animator:
   serializedVersion: 5

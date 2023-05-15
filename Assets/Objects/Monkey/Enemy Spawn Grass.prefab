@@ -943,3 +943,4 @@ MonoBehaviour:
     type: 3}
   broken: 0
   life: 3
+  brokeSound: {fileID: 8300000, guid: dcedc9201a16fcc459e825093579bc8e, type: 3}

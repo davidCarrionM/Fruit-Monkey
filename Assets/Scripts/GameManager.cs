@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public int fruits = -1;
     public int life = 100;
-    public int maxEnemies = 70;
+    public int maxEnemies = 30;
     public int totalEnemies = 0;
     public float bomb = 0.0f;
     public bool pause = false;
@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Win");
         }
-        Debug.Log("Total enemies: "+ totalEnemies);
     }
 
     public void loseLife(int lifeToLose)

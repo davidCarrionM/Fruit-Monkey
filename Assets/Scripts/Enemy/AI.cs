@@ -29,6 +29,7 @@ public class AI : MonoBehaviour
     private Vector3[] vectores = new Vector3[9];
     public LayerMask playerMask;
     private bool auxManager = true;
+    public AudioClip damageSound;
     System.Random random = new System.Random();
     void Start()
     {
@@ -83,6 +84,7 @@ public class AI : MonoBehaviour
 
                             if (Time.time > shotRateTime)
                             {
+                                ControladorSonido.Instance.EjecutarSonido(damageSound);
                                 GameManager.Instance.loseLife(10);
                                 shotRateTime = Time.time + ShotRate;
                                 player = hit.collider.gameObject;

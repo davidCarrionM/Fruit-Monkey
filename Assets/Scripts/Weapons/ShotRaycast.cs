@@ -18,6 +18,10 @@ public class ShotRaycast : MonoBehaviour
     public Camera camWeapon;
     public CamaraMovement camaraMovement;
     private bool aim = false;
+    public AudioClip shotAudio;
+    public AudioClip cuchilloSonido;
+    public AudioClip enemyHit;
+
 
     void Update()
     {
@@ -54,8 +58,13 @@ public class ShotRaycast : MonoBehaviour
                     StartCoroutine(StartRecoil());
                     if (Weapon.tag == "Gun")
                     {
+                        ControladorSonido.Instance.EjecutarSonido(shotAudio);
                         GameObject shotEffect = Instantiate(EffectShot, PositionShot.position, PositionShot.rotation);
                         Destroy(shotEffect, 1);
+                    }
+                    else
+                    {
+                                ControladorSonido.Instance.EjecutarSonido(cuchilloSonido);
                     }
                     if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Range))
                     {
@@ -64,6 +73,7 @@ public class ShotRaycast : MonoBehaviour
                             Debug.Log("Objeto colisionado: " + hit.collider.name + " tag: " + hit.collider.tag);
                             if (hit.collider.tag == "Head" || hit.collider.tag == "Body" || hit.collider.tag == "Extremities")
                             {
+                                ControladorSonido.Instance.EjecutarSonido(enemyHit);
                                 GameObject bloodObject = Instantiate(bloodEfect, hit.point, Quaternion.identity);
                                 Destroy(bloodObject, 1);
                                 if (Weapon.tag == "Knife")

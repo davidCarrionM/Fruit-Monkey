@@ -8,6 +8,7 @@ public class PlayerInteractions : MonoBehaviour
     public Transform spawnSpikesTuto;
     public Transform spawnWater;
     public GameObject spawnCanvas;
+    public AudioClip damageSound;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class PlayerInteractions : MonoBehaviour
 
         if (other.gameObject.CompareTag("DeathFloor"))
         {
+            ControladorSonido.Instance.EjecutarSonido(damageSound);
             GameManager.Instance.loseLife(5);
             Debug.Log("DEATH FLOOR");
             GetComponent<CharacterController>().enabled = false;
@@ -32,6 +34,8 @@ public class PlayerInteractions : MonoBehaviour
         }
         if (other.gameObject.CompareTag("SpikesTuto"))
         {
+            ControladorSonido.Instance.EjecutarSonido(damageSound);
+
             GameManager.Instance.loseLife(5);
             Debug.Log("SPIKES FLOOR");
             GetComponent<CharacterController>().enabled = false;
@@ -41,6 +45,8 @@ public class PlayerInteractions : MonoBehaviour
         }
         if (other.gameObject.CompareTag("WaterFloor"))
         {
+            ControladorSonido.Instance.EjecutarSonido(damageSound);
+
             GameManager.Instance.loseLife(5);
             Debug.Log("WATER FLOOR");
             GetComponent<CharacterController>().enabled = false;

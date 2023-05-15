@@ -1962,6 +1962,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 128
+  damageSound: {fileID: 8300000, guid: bd219889724b34c439191838d493c588, type: 3}
 --- !u!95 &5708946107017202360
 Animator:
   serializedVersion: 5

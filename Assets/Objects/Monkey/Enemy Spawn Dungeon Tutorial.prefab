@@ -139,6 +139,7 @@ MonoBehaviour:
     type: 3}
   broken: 0
   life: 3
+  brokeSound: {fileID: 8300000, guid: dcedc9201a16fcc459e825093579bc8e, type: 3}
 --- !u!1 &565714388638151958
 GameObject:
   m_ObjectHideFlags: 0

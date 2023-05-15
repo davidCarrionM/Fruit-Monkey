@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2470915096720291200}
   - component: {fileID: 1577860368274209317}
   - component: {fileID: 3603258950968299247}
-  - component: {fileID: 2954823824624447291}
   m_Layer: 3
   m_Name: PP_Hyacinth_04
   m_TagString: Untagged
@@ -84,17 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2954823824624447291
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2954823824624447290}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1803037753767285088, guid: 46d171de72518e343891c4b4c03e5103, type: 3}

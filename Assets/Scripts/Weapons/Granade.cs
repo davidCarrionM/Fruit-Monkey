@@ -11,6 +11,7 @@ public class Granade : MonoBehaviour
     public float explosionForce = 70;
     bool exploded = false;
     public GameObject explosionEffect;
+    public AudioClip explosionSound;
 
     void Start()
     {
@@ -32,6 +33,8 @@ public class Granade : MonoBehaviour
 
     private void Explote()
     {
+        ControladorSonido.Instance.EjecutarSonido(explosionSound);
+
         GameObject explosion = Instantiate(explosionEffect, transform.position,transform.rotation);
         Destroy(explosion,3);
         Collider[] colliders = Physics.OverlapSphere(transform.position,radius);

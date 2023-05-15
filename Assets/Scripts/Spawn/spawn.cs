@@ -16,6 +16,7 @@ public class spawn : MonoBehaviour
     public bool broken = false;
     public int life = 3;
     private Renderer material;
+    public AudioClip brokeSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class spawn : MonoBehaviour
         {
             if (broken)
             {
+                ControladorSonido.Instance.EjecutarSonido(brokeSound);
                 if (fence.Length > 0)
                 {
                     GameObject explosion = Instantiate(explosionEffect, fence[0].transform.position, fence[0].transform.rotation);
@@ -52,6 +54,7 @@ public class spawn : MonoBehaviour
                         enemyAux.GetComponent<AI>().destinations = destinations;
                         spawnRateTime = Time.time + spawnRate;
                     }
+                }
                     if (life < 3)
                     {
                         if (life == 2)
@@ -71,7 +74,6 @@ public class spawn : MonoBehaviour
                             }
                         }
                     }
-                }
             }
         }
     }

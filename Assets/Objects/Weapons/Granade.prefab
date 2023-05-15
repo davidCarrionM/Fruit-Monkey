@@ -232,6 +232,7 @@ MonoBehaviour:
   explosionForce: 1000
   explosionEffect: {fileID: 3285081411923098166, guid: 38af4e24f6195034bb3f5ebbc2b55377,
     type: 3}
+  explosionSound: {fileID: 8300000, guid: c801b9c8db589de4e88ff720f588285c, type: 3}
 --- !u!1001 &5017357548370570218
 PrefabInstance:
   m_ObjectHideFlags: 0

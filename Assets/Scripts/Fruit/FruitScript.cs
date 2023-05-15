@@ -8,6 +8,8 @@ public class FruitScript : MonoBehaviour
     public float size = 2.5f;
     private GameObject fruit;
     public GameObject Effect;
+    public AudioClip fuitSound;
+    public AudioClip monkeySound;
 
     void Start()
     {
@@ -21,6 +23,9 @@ public class FruitScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            ControladorSonido.Instance.EjecutarSonido(monkeySound);
+            
+            ControladorSonido.Instance.EjecutarSonido(fuitSound);
             GameManager.Instance.fruits -= 1;
             if (GameManager.Instance.life < 100)
             {
